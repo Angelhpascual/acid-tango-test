@@ -1,7 +1,13 @@
-import Layout from "./components/layout/Layout"
+import Header from "./components/layout/Header"
+import RowsPage from "./components/layout/RowsPage"
 
 function App() {
-  return <Layout />
+  return (
+    <>
+      <Header />
+      <RowsPage />
+    </>
+  )
 }
 
 export default App
