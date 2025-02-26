@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid"
-import { Product } from "../types/product"
+import { Product } from "../types/productTypes"
 
 export const products: Product[] = [
   {
