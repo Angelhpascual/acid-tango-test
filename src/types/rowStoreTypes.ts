@@ -4,4 +4,5 @@ export type RowStoreTypes = {
   rows: RowTypes[]
   addRow: () => void
   removeRow: (id: string) => void
+  addProductToRow: (rowId: string) => void
 }

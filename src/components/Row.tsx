@@ -1,6 +1,13 @@
-import { RowTypes } from "../types/rowTypes"
 import { Button } from "./ui/button"
-import { X } from "lucide-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog"
 import {
   Select,
   SelectContent,
@@ -8,22 +15,42 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select"
+import { X } from "lucide-react"
+import { RowTypes } from "../types/rowTypes"
 import { useRowStore } from "../store/rowStore"
 
 const Row: React.FC<{ row: RowTypes }> = ({ row }) => {
-  const { removeRow } = useRowStore()
+  const { removeRow, addProductToRow } = useRowStore()
 
   return (
     <div
       className="w-full border-3 bg-white h-auto border-black rounded-md mt-6 p-6 flex flex-col items-center relative"
       data-id={row.id}
     >
-      <Button
-        className="absolute -top-4 -right-3 hover:bg-red-600 cursor-pointer transition-all"
-        onClick={() => removeRow(row.id)}
-      >
-        <X size={24} />
-      </Button>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button className="absolute -top-4 -right-3 hover:bg-red-600 cursor-pointer transition-all">
+            <X size={24} />
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[400px]">
+          <DialogHeader>
+            <DialogTitle>¿Eliminar fila?</DialogTitle>
+            <DialogDescription>
+              Esta acción no se puede deshacer. ¿Estás seguro?
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="flex justify-end gap-2">
+            <Button variant="outline" asChild>
+              <DialogTrigger>Cancelar</DialogTrigger>
+            </Button>
+            <Button variant="destructive" onClick={() => removeRow(row.id)}>
+              Sí, eliminar
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       <div className="flex justify-around w-full gap-4">
         {row.products.length > 0 ? (
           row.products.map((product) => (
@@ -47,7 +74,7 @@ const Row: React.FC<{ row: RowTypes }> = ({ row }) => {
         )}
       </div>
       <div className="flex justify-center items-center gap-2 mt-5">
-        <Button>Add Product</Button>
+        <Button onClick={() => addProductToRow(row.id)}>Add Product</Button>
         <Select>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Alignment" />
