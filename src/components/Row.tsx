@@ -1,5 +1,6 @@
 import { RowTypes } from "../types/rowTypes"
 import { Button } from "./ui/button"
+import { X } from "lucide-react"
 import {
   Select,
   SelectContent,
@@ -7,13 +8,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select"
+import { useRowStore } from "../store/rowStore"
 
 const Row: React.FC<{ row: RowTypes }> = ({ row }) => {
+  const { removeRow } = useRowStore()
+
   return (
     <div
-      className="w-full border-3 bg-white h-auto border-black rounded-md mt-6 p-6 flex flex-col items-center"
+      className="w-full border-3 bg-white h-auto border-black rounded-md mt-6 p-6 flex flex-col items-center relative"
       data-id={row.id}
     >
+      <Button
+        className="absolute -top-4 -right-3 hover:bg-red-600 cursor-pointer transition-all"
+        onClick={() => removeRow(row.id)}
+      >
+        <X size={24} />
+      </Button>
       <div className="flex justify-around w-full gap-4">
         {row.products.length > 0 ? (
           row.products.map((product) => (

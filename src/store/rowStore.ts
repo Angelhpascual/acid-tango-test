@@ -6,4 +6,6 @@ export const useRowStore = create<RowStoreTypes>((set) => ({
   rows: [],
   addRow: () =>
     set((state) => ({ rows: [...state.rows, { id: nanoid(), products: [] }] })),
+  removeRow: (id: string) =>
+    set((state) => ({ rows: state.rows.filter((row) => row.id !== id) })),
 }))
