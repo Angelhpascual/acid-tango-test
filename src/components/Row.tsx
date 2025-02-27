@@ -12,7 +12,7 @@ const Row: React.FC<{ row: RowTypes }> = ({ row }) => {
   return (
     <div
       className="w-full border-3 bg-white h-auto border-black rounded-md mt-6 p-6 flex flex-col items-center"
-      data-id={row.id} // 🔹 Agregamos el ID de la fila para debug
+      data-id={row.id}
     >
       <div className="flex justify-around w-full gap-4">
         {row.products.length > 0 ? (
@@ -40,7 +40,7 @@ const Row: React.FC<{ row: RowTypes }> = ({ row }) => {
         <Button>Add Product</Button>
         <Select>
           <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Theme" />
+            <SelectValue placeholder="Alignment" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="center">Center</SelectItem>
