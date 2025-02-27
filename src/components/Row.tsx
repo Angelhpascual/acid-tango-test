@@ -19,12 +19,12 @@ const Row: React.FC = () => {
         <Button>＋ Add Product</Button>
         <Select>
           <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Theme" />
+            <SelectValue placeholder="Alignment" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="light">Light</SelectItem>
-            <SelectItem value="dark">Dark</SelectItem>
-            <SelectItem value="system">System</SelectItem>
+            <SelectItem value="light">Center</SelectItem>
+            <SelectItem value="dark">Left</SelectItem>
+            <SelectItem value="system">Right</SelectItem>
           </SelectContent>
         </Select>
       </div>
