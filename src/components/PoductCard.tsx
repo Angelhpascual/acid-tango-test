@@ -1,7 +1,7 @@
-import { Product } from "../types/productTypes"
+import { ProductType } from "../types/productTypes"
 
 type ProductProps = {
-  product: Product
+  product: ProductType
 }
 
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
