@@ -18,6 +18,7 @@ import {
 import { X } from "lucide-react"
 import { RowTypes } from "../types/rowTypes"
 import { useRowStore } from "../store/rowStore"
+import ProductCard from "./PoductCard"
 
 const Row: React.FC<{ row: RowTypes }> = ({ row }) => {
   const { removeRow, addProductToRow } = useRowStore()
@@ -54,16 +55,7 @@ const Row: React.FC<{ row: RowTypes }> = ({ row }) => {
       <div className="flex justify-around w-full gap-4">
         {row.products.length > 0 ? (
           row.products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-gray-300 h-60 w-60 rounded-2xl flex items-center justify-center"
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="h-40 w-40 object-contain"
-              />
-            </div>
+            <ProductCard key={product.id} product={product} rowId={row.id} />
           ))
         ) : (
           <>

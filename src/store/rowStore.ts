@@ -29,4 +29,15 @@ export const useRowStore = create<RowStoreTypes>((set) => ({
       }),
     }))
   },
+  removeProductFromRow: (rowId, productId) => {
+    console.log(`🗑️ Eliminando producto ${productId} de la fila ${rowId}`) // Debugging
+
+    set((state) => ({
+      rows: state.rows.map((row) =>
+        row.id === rowId
+          ? { ...row, products: row.products.filter((p) => p.id !== productId) }
+          : row
+      ),
+    }))
+  },
 }))

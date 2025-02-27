@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid"
-import { Product } from "../types/productTypes"
+import { ProductType } from "../types/productTypes"
 
-export const products: Product[] = [
+export const products: ProductType[] = [
   {
     id: nanoid(),
     name: "Camiseta Negra",
